@@ -1,6 +1,8 @@
 remorse
 =====
 
+[![Build Status](https://travis-ci.org/jarofghosts/remorse.png?branch=master)](https://travis-ci.org/jarofghosts/remorse)
+
 turn timing information into morse code
 
 ## usage
