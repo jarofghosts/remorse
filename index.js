@@ -35,8 +35,10 @@ function remorse(_time_unit, _fuzziness) {
   }
 
   function defuzz(time) {
-    if (time < (DOT + fuzziness)) return DOT
-    if (Math.abs(time - DASH) <= fuzziness) return DASH
+    if (time <= (DOT + fuzziness)) return DOT
+    if (time > (DOT + fuzziness) && time  < (INTER_WORD - fuzziness)) {
+      return DASH
+    }
 
     return INTER_WORD
   }
