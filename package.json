@@ -1,6 +1,6 @@
 {
   "name": "remorse",
-  "version": "0.0.0",
+  "version": "0.1.0",
   "description": "turn timing information into morse code",
   "main": "index.js",
   "directories": {
