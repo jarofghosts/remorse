@@ -2,20 +2,19 @@ var through = require('through')
 
 module.exports = remorse
 
-function remorse(_time_unit, _fuzziness) {
-  var time_unit = _time_unit || 500,
-      fuzziness = _fuzziness || 200
+function remorse(_timeUnit, _fuzziness) {
+  var timeUnit = _timeUnit || 500
+    , fuzziness = _fuzziness || 200
 
-  var DOT = time_unit,
-      DASH = time_unit * 3,
-      INTER_DOTDASH = time_unit,
-      INTER_LETTER = time_unit * 3,
-      INTER_WORD = time_unit * 7
+  var DOT = timeUnit
+    , DASH = timeUnit * 3
+    , INTER_LETTER = timeUnit * 3
+    , INTER_WORD = timeUnit * 7
 
   var stream = through(process)
 
-  var current_word = [],
-      conversion = {}
+  var currentWord = []
+    , conversion = {}
 
   conversion['' + DOT] = '.'
   conversion['' + DASH] = '-'
@@ -23,20 +22,23 @@ function remorse(_time_unit, _fuzziness) {
   return stream
 
   function process(data) {
-    var character = defuzz(data[0]),
-        space = defuzz(data[1])
+    var character = defuzz(data[0])
+      , space = defuzz(data[1])
 
-    current_word.push(conversion[character])
-    if (space === INTER_WORD) {
-      stream.queue(current_word.join(''))
-      return current_word = []
+    currentWord.push(conversion[character])
+
+    if(space === INTER_WORD) {
+      stream.queue(currentWord.join(''))
+
+      return currentWord = []
     }
-    if (space === INTER_LETTER) current_word.push(' ')
+
+    if(space === INTER_LETTER) currentWord.push(' ')
   }
 
   function defuzz(time) {
-    if (time <= (DOT + fuzziness)) return DOT
-    if (time > (DOT + fuzziness) && time  < (INTER_WORD - fuzziness)) {
+    if(time <= (DOT + fuzziness)) return DOT
+    if(time > (DOT + fuzziness) && time < (INTER_WORD - fuzziness)) {
       return DASH
     }
 
