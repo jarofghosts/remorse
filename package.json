@@ -7,7 +7,7 @@
     "test": "test"
   },
   "scripts": {
-    "test": "node test/index.js"
+    "test": "covert test/index.js"
   },
   "repository": {
     "type": "git",
@@ -27,9 +27,10 @@
   },
   "homepage": "https://github.com/jarofghosts/remorse",
   "dependencies": {
-    "through": "~2.3.4"
+    "through": "^2.3.4"
   },
   "devDependencies": {
+    "covert": "^1.0.1",
     "tape": "^3.0.3"
   }
 }

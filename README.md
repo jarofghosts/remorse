@@ -1,7 +1,8 @@
 remorse
-=====
+=======
 
-[![Build Status](https://travis-ci.org/jarofghosts/remorse.png?branch=master)](https://travis-ci.org/jarofghosts/remorse)
+[![Build Status](http://img.shields.io/travis/jarofghosts/remorse/master.svg?style=flat)](https://travis-ci.org/jarofghosts/remorse)
+[![npm install](http://img.shields.io/npm/dm/remorse.svg?style=flat)](https://www.npmjs.org/package/remorse)
 
 turn timing information into morse code
 
@@ -19,8 +20,9 @@ can we smudge the timing to fit our idea of morse code" (defaults to 200ms)
 ## example
 
 ```js
-var remorse = require('remorse'),
-    fs = require('fs')
+var fs = require('fs')
+
+var remorse = require('remorse')
 
 fs.createReadStream('mouse-timing-events.dat')
   .pipe(remorse(225, 100))
